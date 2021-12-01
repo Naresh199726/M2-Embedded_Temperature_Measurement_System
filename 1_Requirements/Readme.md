@@ -1,5 +1,5 @@
 
-#High level Requirements:
+##High level Requirements:
 
 ATmega328- To perform the tasks which is given in the hex file
 
@@ -24,7 +24,8 @@ Ground
 
 
 
-#SWOT
+
+##SWOT
 
 Strengths:
 
