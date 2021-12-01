@@ -27,7 +27,7 @@ Ground
 
 # SWOT
 
-Strengths:
+##Strengths:
 
 Proactive
 
@@ -36,7 +36,7 @@ Professional
 Multitasking
 
 
-Weaknesses:
+##Weaknesses:
 
 Disorganised
 
@@ -44,14 +44,14 @@ Insecure
 
 
 
-Opportunites:
+##Opportunites:
 
 high demand for multi-tasking programs
 
 high demand for engineers
 
 
-Threat:
+##Threat:
 
 Economic ressions
 
