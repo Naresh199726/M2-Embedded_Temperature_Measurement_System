@@ -1,5 +1,5 @@
 
-##High level Requirements:
+# High level Requirements:
 
 ATmega328- To perform the tasks which is given in the hex file
 
@@ -10,7 +10,7 @@ LCD- It is used to display the ouput
 I2C- It is a protocal used to transfer data.
 
 
-#Low level Requirements:
+# Low level Requirements:
 
 Resistors 
 
@@ -25,7 +25,7 @@ Ground
 
 
 
-##SWOT
+# SWOT
 
 Strengths:
 
