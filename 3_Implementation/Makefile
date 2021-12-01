@@ -1,15 +1,14 @@
-PROJ_NAME = Temprature_Mesurment
+PROJ_NAME = Heat_Monitoring
 
 BUILD_DIR = Build
 
 # All Source code files
-DOTC = main.c\
-dotc/dot1.c\
-dotc/dot2.c\
-dotc/dot3.c
-    
+SRC = app.c\
+src/init.c\
+src/adc.c
+
 # All header file paths
-DOTH = -D doth
+INC = -I inc
 
 # Configuring for Both Windows and Linux Operating System
 ifdef OS	# Windwos OS
@@ -35,13 +34,13 @@ endif
 
 all:$(BUILD_DIR)
 # Compile the code and generate the ELF file
-	$(CC) -g -Wall -Os -mmcu=atmega328  $(DOTH) $(DOTC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).elf)
+	$(CC) -g -Wall -Os -mmcu=atmega328  $(INC) $(SRC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).elf)
 
 $(BUILD_DIR):
 # Create directory to store the built files
 	mkdir $(BUILD_DIR)
 
-analysis: $(DOTC)
+analysis: $(SRC)
 # Analyse the code using Cppcheck command line utility
 	cppcheck --enable=all $^
 
