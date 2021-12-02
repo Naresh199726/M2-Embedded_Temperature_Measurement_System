@@ -19,7 +19,18 @@ I2C stands for Inter-Integrated Circuit. It is a bus interface connection protoc
 # LCD:
 ![image](https://user-images.githubusercontent.com/62556829/144394626-0104d43f-fb4f-414d-b64f-2910cc2168c1.png)
 
+
 LCD (Liquid Crystal Display) is a type of flat panel display which uses liquid crystals in its primary form of operation. ... LCDs were a big leap in terms of the technology they replaced, which include light-emitting diode (LED) and gas-plasma displays.
+
+# FOLDER STRUCTURE
+
+|FOLDER	             |  DESCRPTION                            |
+|------------------- |--------------------------------------  |
+|1_Requirements  	   | Documents detailing requirements       |     
+|2_Architecture  	   | Structural and Behavioural UML         |
+|3_Implementation	   |  All the code is written here          |
+|4_Report	           |  Generated Report                      |
+
 
 
 
