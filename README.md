@@ -22,6 +22,22 @@ I2C stands for Inter-Integrated Circuit. It is a bus interface connection protoc
 
 LCD (Liquid Crystal Display) is a type of flat panel display which uses liquid crystals in its primary form of operation. ... LCDs were a big leap in terms of the technology they replaced, which include light-emitting diode (LED) and gas-plasma displays.
 
+# 4W & 1H
+# Where:
+In embadded products.
+
+# Who:
+Embaddeed devlopers and engenring students.
+
+# When:
+When the product reqirments demands.
+
+# What:
+it helps to convert analog signals to digital
+
+# How:
+By interfacing ADC to Atmega328.
+
 # FOLDER STRUCTURE
 
 |FOLDER	             |  DESCRPTION                            |
