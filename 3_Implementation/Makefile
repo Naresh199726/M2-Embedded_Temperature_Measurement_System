@@ -1,4 +1,4 @@
-PROJ_NAME = Heat_Monitoring
+PROJ_NAME = clock
 
 BUILD_DIR = Build
 
