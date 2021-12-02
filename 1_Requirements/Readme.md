@@ -51,6 +51,24 @@ high demand for multi-tasking programs
 high demand for engineers
 
 
+# bill of materials:
+
+Circuit: _backup.simu
+
+Bill of Materials:
+
+Capacitor-48 : Capacitor 22 pF
+Capacitor-49 : Capacitor 22 pF
+Hd44780-2 : Hd44780   
+I2CToParallel-3 : I2CToParallel   
+Led-35 : Led   
+Resistor-19 : Resistor 4 kΩ
+Resistor-20 : Resistor 4 kΩ
+Resistor-34 : Resistor 220 Ω
+Resistor-40 : Resistor 10 kΩ
+atmega328-1 : atmega328  
+
+
 ##Threat:
 
 Economic ressions
