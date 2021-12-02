@@ -51,6 +51,16 @@ high demand for multi-tasking programs
 high demand for engineers
 
 
+  
+
+
+##Threat:
+
+Economic ressions
+
+posiblity of working under presure
+
+
 # bill of materials:
 
 Circuit: _backup.simu
@@ -66,14 +76,7 @@ Resistor-19 : Resistor 4 kΩ
 Resistor-20 : Resistor 4 kΩ
 Resistor-34 : Resistor 220 Ω
 Resistor-40 : Resistor 10 kΩ
-atmega328-1 : atmega328  
-
-
-##Threat:
-
-Economic ressions
-
-posiblity of working under presure
+atmega328-1 : atmega328
 
 
 
