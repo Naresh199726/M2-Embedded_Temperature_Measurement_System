@@ -1,38 +1,24 @@
 
-![image](https://user-images.githubusercontent.com/62556829/144381745-4291a511-07e6-4c4f-8a6f-76160f752b44.png)
+In this project I tested the analog to digital converter (ADC) from the Atmega328p. It read’s out an analog pin and shows the value on an i2c lcd. There are 6 analog ports and 2 are already used for the lcd. To change the voltage at the analog pin I used a 10k potmeter. The ADC can be set to free running mode or single conversion mode. Free running mode means the ADC samples continuously and single conversion mode means, only sample when you order to do so. I use the single conversion mode in this project.
 
-The high-performance Microchip 8-bit AVR® RISC-based microcontroller combines 32 KB ISP Flash memory with read-while-write capabilities, 1 KB EEPROM, 2 KB SRAM, 23 general purpose I/O lines, 32 general purpose working registers, three flexible timer/counters with compare modes, internal and external interrupts, serial programmable USART, a byte-oriented Two-Wire serial interface, SPI serial port, 6-channel 10-bit A/D converter (8-channels in TQFP and QFN/MLF packages), programmable watchdog timer with internal oscillator, and five software selectable power saving modes. The device operates between 1.8-5.5 volts.
-By executing powerful instructions in a single clock cycle, the device achieves throughputs approaching one MIPS per MHz, balancing power consumption and processing speed.
- 
+The working of the ADC:
+The first thing that’s needed to be done is initializing the ADC. I used a separate function called adc_init() in the file adc.c to get this done. For a proper initialization a few registers have to be set. For single conversion mode not all registers are used therefor I only describe the used registers in this project.
 
-
-![image](https://user-images.githubusercontent.com/62556829/144382357-3dc3127f-27ac-4f41-9d96-1b75d56406d5.png)
-
-I2C stands for Inter-Integrated Circuit. It is a bus interface connection protocol incorporated into devices for serial communication. It was originally designed by Philips Semiconductor in 1982. Recently, it is a widely used protocol for short-distance communication. It is also known as Two Wired Interface(TWI)
+The ADMUX register is dealing with the voltage reference and the analog pin(s) that will be used.
 
 
+![image](https://user-images.githubusercontent.com/62556829/144391733-f6a0928d-baae-459d-b8eb-1ccf6f2c6ff1.png)
 
-![image](https://user-images.githubusercontent.com/62556829/144382685-bb88b6e6-ffef-4c72-b8bd-9d69eadf4aa3.png)
+Bit 6 and 7 tells the Atmega328p against what reference the voltage on the pin should be measured. This is important for the precision of the 10 bit read value. For example, it is possible to put 2V as a reference on the AREF pin. In that case the 10 bits (value up to 1023) will be divided over 2V. It’s more presice. It also means that every voltage above 2V on the analog pin will be presented as 1023. In this project I used Avcc (5V) as a reference therefor bit REFS0 is set.
 
-The HD44780U dot-matrix liquid crystal display controller and driver LSI displays alphanumerics,
-Japanese kana characters, and symbols. It can be configured to drive a dot-matrix liquid crystal display
-under the control of a 4- or 8-bit microprocessor. Since all the functions such as display RAM, character
-generator, and liquid crystal driver, required for driving a dot-matrix liquid crystal display are internally
-provided on one chip, a minimal system can be interfaced with this controller/driver.
-A single HD44780U can display up to one 8-character line or two 8-character lines.
-The HD44780U has pin function compatibility with the HD44780S which allows the user to easily replace
-an LCD-II with an HD44780U. The HD44780U character generator ROM is extended to generate 208 5 ×
-8 dot character fonts and 32 5 × 10 dot character fonts for a total of 240 different character fonts.
-The low power supply (2.7V to 5.5V) of the HD44780U is suitable for any portable battery-driven product
-requiring low power dissipation.
+![image](https://user-images.githubusercontent.com/62556829/144391906-c97392e8-3818-416f-bc9b-ab8899695955.png)
+
+The last register I use for initializing is the ADCSRA register.
+
+![image](https://user-images.githubusercontent.com/62556829/144392068-3e36d6bb-0ad4-4696-84a5-fb17a068f4ea.png)
 
 
-# Adc
 
-![image](https://user-images.githubusercontent.com/62556829/144383754-6aa57e02-6359-4a3d-a13e-2f8854757d8e.png)
+Bit 7 is the ADC enable and needs to be set to activate the ADC. Bit 6 is the ADC start conversion, this is used in the application every time you need to read a value from the analog pin. Bit 5-3 is used for interrupts and triggering on certain conditions. Not used in this project. Bit 2 – 0 sets a prescaler. The 16MHz external clock gets divided by this prescaler to set the sampling rate. In this project all 3 bits are set, which gives a division factor of 128. The Atmega328p ADC circuit needs a clock below 200 KHz to get a 10 bit resolution and by using a higher frequentie the resolution will only be 8 bits, but then you will have a faster sampling rate. In this project I use 16 MHz / 128 to get 125 KHz. This is below 200 KHz so it will provide the full 10 bits resolution.
 
-
-The ATmega48A/PA/88A/PA/168A/PA/328/P features a 10-bit successive approximation ADC. The ADC is connected to an 8-channel Analog Multiplexer which allows eight single-ended voltage inputs constructed from the pins of Port A. The single-ended voltage inputs refer to 0V (GND).
-The ADC uses registers ADMUX, ADCSRA, ADCL, ADCH, ADCSRB, and DIDR0 to configure the hardware and to do analog to digital conversion. Along with register configuration, ADC hardware also needs a separate analog supply voltage pin, AVCC. AVCC must not differ more than ±0.3V from VCC. Internal reference voltages can be set at 1.1V or AVCC. When the voltage reference is selected externally the AREF pin is connected with a capacitor for better noise performance.
-
-
+![image](https://user-images.githubusercontent.com/62556829/144393053-280f384d-fdf4-475e-a3e6-5ecbdbe716a8.png)
