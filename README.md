@@ -8,4 +8,3 @@ Temperature Measurement System using Atmega328
 
 
 
-![image](https://user-images.githubusercontent.com/62556829/144392146-84e33b1e-0677-48f3-9aa2-fc5a0c178a05.png)
